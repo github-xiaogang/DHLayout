@@ -22,6 +22,4 @@ I wrote this to separate UIView`s layout job to layout manager , so we can add a
         + DHVerticalLayoutManager
  
 # Usage:
-
-    It was designed to be work with Xib (of course you can use it in Code) , you can set all the property in <User Defined Runtime Attributes> section
-    you can learn more in the Demo
+* It was designed to be work with Xib (of course you can use it in Code) , you can set all the property in <User Defined Runtime Attributes> section, and you can learn more in the Demo.
