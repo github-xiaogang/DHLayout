@@ -20,6 +20,9 @@
     float yOffset = 0.0f;
     int currentLine = 0;
     BOOL isNewLine = NO;
+    int validaCount = 0;  //有效subview个数
+
+    
     xOffset += _paddingLeft;
     yOffset += _paddingTop;
     
@@ -27,7 +30,7 @@
     for (int i=0; i<self.view.subviews.count; i++) {
         UIView * view = [self.view.subviews objectAtIndex:i];
         if(!view.shouldBeLayout) continue;
-        
+        validaCount ++;
         if(!isNewLine && (!IS_FLOAT_ZERO(_space) && IS_FLOAT_ZERO(view.marginLeft))){
             xOffset += _space;
         }else{
@@ -56,6 +59,10 @@
     }
     float realWidth = xOffset + _paddingRight;
     float realHeight = _paddingTop + (currentLine + 1) * _lineHeight + _paddingBottom;
+    if(validaCount == 0){ //没有任何元素.
+        realHeight = 0;
+        realWidth = 0;
+    }
     _contentSize.width = realWidth;
     _contentSize.height = realHeight;
     

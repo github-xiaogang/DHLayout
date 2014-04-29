@@ -20,19 +20,19 @@
     float yOffset = 0.0f;
     int columnNo = 0;
     BOOL isNewColumn = NO;
-    
+    int validaCount = 0;  //有效subview个数
+
     yOffset += _paddingTop;
     isNewColumn = YES;
     for (int i=0; i<self.view.subviews.count; i++) {
         UIView * view = [self.view.subviews objectAtIndex:i];
         if(!view.shouldBeLayout ) continue;
-        
+        validaCount ++;
         if(!isNewColumn && (!IS_FLOAT_ZERO(_space) && IS_FLOAT_ZERO(view.marginTop))){
             yOffset += _space;
         }else{
             yOffset += view.marginTop;
         }
-        yOffset += view.marginTop;
         view.top = yOffset;
         view.left = _paddingLeft + _columnWidth * columnNo + view.marginLeft;
         yOffset += view.height + view.marginBottom;
@@ -55,6 +55,10 @@
     }
     float realHeight = yOffset + _paddingBottom;    
     float realWidth =  (columnNo + 1) * _columnWidth;
+    if(validaCount == 0){  //没有任何元素时
+        realWidth = 0;
+        realHeight = 0;
+    }
     _contentSize.width = realWidth;
     _contentSize.height = realHeight;
     
