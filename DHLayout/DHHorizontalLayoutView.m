@@ -31,6 +31,13 @@
     [self setupLayoutManager];
 }
 
+- (void)layoutNow
+{
+    //trigger layout
+    self.width += 1;
+    [self layoutIfNeeded];
+}
+
 - (void)setupLayoutManager
 {
     DHHorizontalLayoutManager * layoutManager = [[DHHorizontalLayoutManager alloc] init];

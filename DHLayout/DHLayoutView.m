@@ -24,6 +24,12 @@
     }
 }
 
+- (void)layoutNow
+{
+    [self setNeedsLayout];
+    [self layoutIfNeeded];
+}
+
 - (void)setLayoutManager:(DHLayoutManager *)layoutManager
 {
     if(layoutManager && [layoutManager isKindOfClass:[DHLayoutManager class]] && layoutManager != _layoutManager){

@@ -28,6 +28,13 @@
     [self setupLayoutManager];
 }
 
+- (void)layoutNow
+{
+    //trigger layout
+    self.height += 1;
+    [self layoutIfNeeded];
+}
+
 - (void)setupLayoutManager
 {
     DHVerticalLayoutManager * layoutManager = [[DHVerticalLayoutManager alloc] init];

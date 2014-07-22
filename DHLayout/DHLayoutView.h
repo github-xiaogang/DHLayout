@@ -28,4 +28,8 @@
  */
 - (void)layoutSubviews;
 
+/**
+ * layout immediately
+ */
+- (void)layoutNow;
 @end
